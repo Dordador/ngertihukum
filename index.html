@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NgertiHukum — Surat Hukum, Dibikin Ngerti</title>
+<meta name="description" content="Tempel surat resmi atau surat hukum, dapatkan penjelasan bahasa sederhana, fakta penting, dan draf surat balasan. Gratis, berjalan di HP, surat Anda tidak keluar dari perangkat.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>Ngerti<span>Hukum</span></h1>
+    <p class="tagline">Surat hukum, dibikin ngerti.</p>
+  </div>
+</header>
+
+<div class="disclaimer wrap" role="note">
+  ⚠️ NgertiHukum membantu memahami <strong>bahasa</strong> surat — bukan pengacara dan
+  bukan nasihat hukum. Untuk kasus nyata, hubungi LBH (Lembaga Bantuan Hukum) terdekat.
+  Semua proses berjalan di perangkat Anda; isi surat tidak dikirim ke mana pun.
+</div>
+
+<nav class="tabs wrap" aria-label="Fitur">
+  <button class="tab active" data-tab="baca">📄 Baca Surat</button>
+  <button class="tab" data-tab="balas">✉️ Balas Surat</button>
+  <button class="tab" data-tab="kamus">📖 Kamus Hukum</button>
+</nav>
+
+<main class="wrap">
+  <!-- ============ BACA SURAT ============ -->
+  <section id="panel-baca" class="panel active">
+    <h2>Tempel isi surat Anda</h2>
+    <p class="hint">Salin teks surat (somasi, surat tagihan, surat panggilan, kontrak sederhana)
+      ke kotak di bawah, lalu tekan <strong>Jelaskan</strong>. Atau coba surat contoh dulu.</p>
+    <div class="sample-row">
+      <button class="chip" data-sample="somasi">Contoh: Surat Somasi</button>
+      <button class="chip" data-sample="tagihan">Contoh: Surat Tagihan</button>
+    </div>
+    <textarea id="letter-input" rows="10" placeholder="Tempel teks surat di sini…"></textarea>
+    <button id="btn-explain" class="primary">Jelaskan Surat Ini</button>
+
+    <div id="result" class="result hidden">
+      <h3>Fakta Penting</h3>
+      <ul id="facts" class="facts"></ul>
+
+      <h3>Ringkasan Bahasa Sederhana</h3>
+      <p id="summary" class="summary"></p>
+
+      <h3>Isi Surat (ketuk kata yang disorot)</h3>
+      <div id="highlighted" class="highlighted"></div>
+      <div id="term-chips" class="term-chips"></div>
+      <div id="term-box" class="term-box hidden"></div>
+
+      <h3>Langkah Selanjutnya</h3>
+      <ul id="checklist" class="checklist"></ul>
+
+      <button id="btn-balas" class="secondary">✉️ Buat Surat Balasan dari Surat Ini</button>
+    </div>
+  </section>
+
+  <!-- ============ BALAS SURAT ============ -->
+  <section id="panel-balas" class="panel">
+    <h2>Buat surat balasan formal</h2>
+    <p class="hint">Pilih jenis balasan, isi data singkat, lalu salin hasilnya.</p>
+    <label>Jenis balasan
+      <select id="reply-type">
+        <option value="klarifikasi">Meminta klarifikasi / penjelasan</option>
+        <option value="sanggahan">Menyampaikan sanggahan / keberatan</option>
+        <option value="keringanan">Memohon keringanan / angsuran</option>
+      </select>
+    </label>
+    <label>Nomor surat Anda (boleh kosong) <input id="f-nomor" type="text" placeholder="Contoh: 01/TS/XII/2026"></label>
+    <label>Nama Anda <input id="f-nama" type="text" placeholder="Nama lengkap"></label>
+    <label>Alamat Anda <input id="f-alamat" type="text" placeholder="Desa, kecamatan, kabupaten"></label>
+    <label>Ditujukan kepada <input id="f-tujuan" type="text" placeholder="Nama orang / instansi pengirim surat"></label>
+    <label>Perihal surat mereka <input id="f-perihal" type="text" placeholder="Contoh: Somasi pembayaran tunggakan"></label>
+    <label>Pokok tanggapan Anda
+      <textarea id="f-isi" rows="4" placeholder="Tulis inti tanggapan Anda dengan bahasa sehari-hari — akan dibungkus ke format formal."></textarea>
+    </label>
+    <button id="btn-draft" class="primary">Buat Draf Surat</button>
+    <textarea id="reply-output" rows="12" class="hidden" readonly></textarea>
+    <button id="btn-copy" class="hidden">Salin Draf</button>
+    <button id="btn-print" class="hidden">Cetak / Simpan PDF</button>
+  </section>
+
+  <!-- ============ KAMUS ============ -->
+  <section id="panel-kamus" class="panel">
+    <h2>Kamus hukum bahasa sederhana</h2>
+    <p class="hint" id="glossary-count"></p>
+    <input id="glossary-search" type="search" placeholder="Cari istilah… (mis. somasi, wanprestasi)">
+    <div id="glossary-list" class="glossary"></div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <p>NgertiHukum — proyek SLAY HACKS 2026. Dibangun untuk membantu warga memahami surat resmi.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ai-adapter.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
